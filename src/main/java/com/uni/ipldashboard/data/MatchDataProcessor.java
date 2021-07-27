@@ -4,13 +4,11 @@ import java.time.LocalDate;
 
 import com.uni.ipldashboard.model.Match;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.batch.item.ItemProcessor;
 
 public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
 
-    private static final Logger log = LoggerFactory.getLogger(MatchDataProcessor.class);
 
     @Override
     public Match process(MatchInput matchInput) throws Exception {
