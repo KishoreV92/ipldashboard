@@ -7,6 +7,8 @@ import com.uni.ipldashboard.model.Match;
 
 import org.springframework.batch.item.ItemProcessor;
 
+import net.bytebuddy.asm.MemberSubstitution.Substitution.ForMethodInvocation.MethodResolver.Matching;
+
 public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
 
 
@@ -27,8 +29,8 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
                     : matchInput.getTeam1();
         } else {
             secondInningsTeam = matchInput.getToss_winner();
-            firstInningsTeam = matchInput.getToss_winner().equals(matchInput.getTeam2()) ? matchInput.getTeam2()
-                    : matchInput.getTeam1();
+            firstInningsTeam = matchInput.getToss_winner().equals(matchInput.getTeam2()) ? matchInput.getTeam1()
+                    : matchInput.getTeam2();
         }
         match.setTeam1(firstInningsTeam);
         match.setTeam2(secondInningsTeam);
@@ -39,6 +41,7 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
         match.setUmpire1(matchInput.getUmpire1());
         match.setUmpire2(matchInput.getUmpire2());
         match.setMatchWinner(matchInput.getWinner());
+        match.setVenue(matchInput.getVenue());
 
         return match;
     }
