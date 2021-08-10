@@ -37,4 +37,8 @@ public class AppService {
         return matchRepository.getMatchesByNameandDate(teamName, startDate, endDate);
 
     }
+    
+    public Iterable<Team> getAllTeams() {
+       return this.teamRepository.findAll();
+    }
 }

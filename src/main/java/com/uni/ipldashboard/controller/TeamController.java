@@ -37,4 +37,9 @@ public class TeamController {
 
         return this.appService.getMatchesForTeam(teamName, year);
     }
+
+    @GetMapping("/team")
+    public Iterable<Team> getAllTeams() {
+        return this.appService.getAllTeams();
+    }
 }
